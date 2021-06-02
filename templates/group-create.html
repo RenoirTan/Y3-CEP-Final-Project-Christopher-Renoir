@@ -1,0 +1,32 @@
+{%extends "base.html"%}
+
+{%block title%}Create group{%endblock%}
+{%block head%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/create-entity.css') }}">
+{%endblock%}
+{%block scripts%} {%endblock%}
+{%block navtitle%}<h1>New Group</h1>{%endblock%}
+{%block content%}
+
+<form action="/group/create" method="POST">
+    <div class="create-entity">
+		<div class="create-entity-title">
+			<h1>Create A Group</h1>
+		</div>
+        <div class="create-entity-form">
+            <div class="control-group">
+                <textarea type="text" class="input-field" value="" placeholder="Think of a name for your group" name="name" rows=1></textarea>
+                <label class="login-field-icon fui-user" for="name-field"></label>
+            </div>
+            <div class="control-group">
+                <textarea type="text" class="input-field" value="" placeholder="Tags" name="tags"
+                rows=10></textarea>
+                <label class="login-field-icon fui-user" for="tags-field"></label>
+            </div>
+            <input type="submit" value="Create group" class="btn btn-block" onclick="return confirm('Are you sure?');">
+        </div>
+    </div>
+</form>
+
+{%endblock%}
+{%block footer%}{%endblock%}

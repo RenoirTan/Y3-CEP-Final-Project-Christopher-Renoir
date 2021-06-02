@@ -1,0 +1,11 @@
+runtime: python37
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /.*
+  script: master.app
+
+libraries:
+- name: ssl
+  version: latest

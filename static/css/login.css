@@ -1,0 +1,87 @@
+.login {
+margin: 20px auto;
+width: 300px;
+}
+.login-screen {
+background-color: #DDDDDD;
+padding: 20px;
+border-radius: 5px
+}
+
+.app-title {
+text-align: center;
+color: #777;
+}
+
+.login-field {
+	border-radius: 0px;
+	margin: 0 auto;
+	float: none;
+	border: none;
+	border-bottom: 5px solid #06a783;
+	-webkit-border-bottom: 5px solid #06a783;
+	-moz-border-bottom: 5px solid #06a783;
+	box-shadow: none;
+	-webkit-box-shadow: none !important;
+  	-moz-box-shadow: none !important;
+	background-color: #EEEEEE;
+	outline: none;
+	width: 90%;
+}
+
+.login-field:hover {
+	border: none;
+	border-bottom: 5px solid #06a783;
+	-webkit-border-bottom: 5px solid #06a783;
+	-moz-border-bottom: 5px solid #06a783;
+	box-shadow: none;
+	-webkit-box-shadow: none !important;
+  	-moz-box-shadow: none !important;
+	background-color: #EEEEEE;
+	outline: none;
+	width: 90%;
+}
+
+.login-field:focus {
+	border: none;
+	border-bottom: 5px solid #06a783;
+	-webkit-border-bottom: 5px solid #06a783;
+	-moz-border-bottom: 5px solid #06a783;
+	box-shadow: none;
+	-webkit-box-shadow: none !important;
+  	-moz-box-shadow: none !important;
+	background-color: #EEEEEE;
+	outline: none;
+	width: 90%;
+}
+
+.login-field:active {
+	border: none;
+	border-bottom: 5px solid #06a783;
+	-webkit-border-bottom: 5px solid #06a783;
+	-moz-border-bottom: 5px solid #06a783;
+	box-shadow: none;
+	-webkit-box-shadow: none !important;
+  	-moz-box-shadow: none !important;
+	background-color: #EEEEEE;
+	outline: none;
+	width: 90%;
+}
+
+.login-form {
+text-align: center;
+}
+
+.control-group {
+margin-bottom: 10px;
+}
+
+#remember-me {
+	display: inline;
+	color: #06a783;
+}
+
+#redirect-login {
+	margin-top: 50px;
+	width: 200px;
+}

@@ -1,0 +1,150 @@
+.user-in-group {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: stretch;
+	align-content: flex-end;
+}
+
+.uig-section {
+    align-self: flex-start;
+}
+
+.uig-remove {
+    float: right;
+    background-color: #ff0000;
+	border-radius: 0px 5px 5px 0px;
+	border-color: #ff0000;
+	color: #FFFFFF;
+	box-shadow: 0 0 5px #ff0000/*rgb(9, 131, 64)*/;
+	margin: 20px 10px 20px 0px;
+    padding: 3px 10px 3px 10px;
+	width: 100px;
+	display: flex;
+    height: 100%;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.25s, box-shadow 0.25s, margin 0.25s;
+}
+
+.uig-remove:hover {
+	background-color: #c20000;
+	color: #FFFFFF;
+	box-shadow: 0 0 3px #ff0000;
+	margin-left: 10px;
+	margin-right: 0px;
+	transition: background-color 0.25s, box-shadow 0.25s, margin 0.25s;
+}
+
+.uig-remove:active {
+	background-color: #a10000;
+	box-shadow: 0 0 2px #ff0000;
+	transition: background-color 0.25s, box-shadow 0.25s, margin 0.25s;
+}
+
+.uig-remove-internal {
+	background: inherit;
+	color: inherit;
+	border-color: inherit;
+	border: inherit;
+}
+
+.uig-description {
+	background-color: #FFFFFF;
+	border-radius: 5px 0px 0px 5px;
+	border-color: #FFFFFF;
+	border-bottom: 5px solid #06a783;
+	color: #333333;
+	box-shadow: 0 0 10px #BBBBBB/*rgb(9, 131, 64)*/;
+	margin: 20px 10px 20px 0px;
+	padding: 3px 10px 3px 10px;
+    text-decoration: none;
+    flex-grow: 1;
+    min-width: 50%;
+}
+
+.uig-description-rounded {
+	border-radius: 5px;
+}
+
+/*
+.uig-description:hover {
+	background-color: #EEEEEE;
+	box-shadow: 0 0 5px #BBBBBB/;
+	margin-left: 10px;
+	margin-right: 0px;
+	transition: background-color 0.25s, box-shadow 0.25s, margin 0.25s;
+}
+
+.uig-description:active {
+	background-color: #CCCCCC;
+	box-shadow: 0 0 5px #BBBBBB;
+	transition: background-color 0.25s, box-shadow 0.25s, margin 0.25s;
+}
+*/
+
+.user-header {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+}
+
+/*
+#add-student-button {
+	float: right;
+	padding: auto;
+	width: 200px;
+	margin: 10px;
+}
+*/
+
+.add-user {
+	display: flex;
+}
+
+.add-user-field {
+	background-color: #EEEEEE;
+	border: none;
+	border-left: 5px solid #06a783;
+	width: (100%-100px);
+	box-sizing: border-box;
+	flex-grow: 1;
+	margin: 10px 5px 10px 0px;
+}
+
+.uig-add {
+    float: right;
+    background-color: #06a783;
+	border-radius: 0px 5px 5px 0px;
+	border-color: #06a783;
+	color: #FFFFFF;
+	box-shadow: 0 0 5px #06a783;/*rgb(9, 131, 64)*/;
+	margin: 10px 10px 10px 5px;
+    padding: 3px 10px 3px 10px;
+	display: flex;
+    height: 40px;
+	max-width: 90%;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.25s, box-shadow 0.25s, margin 0.25s;
+}
+
+.uig-add:hover {
+	background-color: #06866b;
+	color: #FFFFFF;
+	box-shadow: 0 0 3px #06a783;
+	margin-right: 0px;
+	transition: background-color 0.25s, box-shadow 0.25s, margin 0.25s;
+}
+
+.uig-add:active {
+	background-color: #03634e;
+	box-shadow: 0 0 2px #06a783;
+	transition: background-color 0.25s, box-shadow 0.25s, margin 0.25s;
+}
+
+@media screen and (max-width: 576px) {
+	.uig-add {
+		border-radius: 5px;
+	}
+}

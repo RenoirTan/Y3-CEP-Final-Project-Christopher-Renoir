@@ -1,0 +1,140 @@
+{%extends "base.html"%}
+
+{%block title%}Group{%endblock%}
+{%block head%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/group-individual.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/entities.css') }}">
+{%endblock%}
+{%block scripts%} {%endblock%}
+{%block navtitle%}<h1>Group</h1>{%endblock%}
+{%block content%}
+
+
+<div class="group-data">
+    <h1 id="group-name">
+        {{ group_data["name"] }}
+    </h1>
+
+    <p id="date-posted">
+        <!---->
+        Last updated on {{ group_data["dateUpdated"].strftime("%m/%d/%Y, %H:%M:%S") }}
+    </p>
+</div>
+
+{% if valid_user_type %}
+<div class="remove-entity">
+	<form action="/group/{{group_data['_id']|string}}/delete" method="POST">
+		<div class="container-fluid no-padding">
+                <div class="row">
+                    <div class="col">
+                        <input type="submit" value="Delete Group" class="delete-entity col" id="delete-group-button" style="text-decoration: none;" onclick="return confirm('Are you sure?');">
+                    </div>
+                </div>
+            </div>
+	</form>
+</div>
+{% endif %}
+
+{% if valid_user_type %}
+<div class="group-tags">
+	<h3>Tags</h3>
+		<form action="/group/{{group_data['_id']|string}}" method="POST" id="tags-header">
+            <div class="container-fluid no-padding">
+                <div class="row">
+                    <div class="col">
+                        <div class="add-user">
+                            <textarea type="text" class="add-user-field" value="" placeholder="Insert tags" name="tags" rows=8>{% for tag in group_data["tags"] %}{{ tag }}{% endfor %}</textarea>
+                            <label class="login-field-icon fui-user" for="tags-field"></label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <input type="submit" value="Set tags" class="uig-add col" id="add-tags-button" style="text-decoration: none;" name="change-tags">
+                    </div>
+                </div>
+            </div>
+        </form>
+</div>
+{% endif %}
+
+<div class="group-users" id="group-students">
+    <h3>Students</h3>
+    {% if valid_user_type %}
+        <form action="/group/{{group_data['_id']|string}}" method="POST" id="student-header">
+            <div class="container-fluid no-padding">
+                <div class="row">
+                    <div class="col">
+                        <div class="add-user">
+                            <textarea type="text" class="add-user-field" value="" placeholder="Insert username" name="username" rows=2></textarea>
+                            <label class="login-field-icon fui-user" for="username-field"></label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <input type="submit" value="Add student" class="uig-add col" id="add-student-button" style="text-decoration: none;" name="add-students">
+                    </div>
+                </div>
+            </div>
+        </form>
+    {% endif %}
+    
+    {% for student in students_data %}
+    <div class="user-in-group">
+        {% if valid_user_type %}
+            <form action="/group/{{group_data['_id']}}/remove/student/{{student['username']}}" method="POST" class="uig-section uig-remove">
+                <input type="submit" value="Remove" class="uig-remove-internal">
+            </form>
+        {% endif %}
+        {% if valid_user_type %}
+        <div class="uig-section uig-description">
+        {% else %}
+        <div class="uig-section uig-description uig-description-rounded">
+        {% endif %}
+            <p>Name: {{ student["name"] }}</p>
+            <p>Username: {{ student["username"] }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="group-users" id="group-staff">
+    <h3>Staff</h3>
+    {% if valid_user_type %}
+        <form action="/group/{{group_data['_id']|string}}" method="POST" id="staff-header">
+            <div class="container-fluid no-padding">
+                <div class="row">
+                    <div class="col">
+                        <div class="add-user">
+                            <textarea type="text" class="add-user-field" value="" placeholder="Insert username" name="username"
+                                rows=2></textarea>
+                            <label class="login-field-icon fui-user" for="username-field"></label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <input type="submit" value="Add staff" class="uig-add col" id="add-staff-button" style="text-decoration: none;" name="add-staff">
+                    </div>
+                </div>
+            </div>
+        </form>
+    {% endif %}
+    
+    {% for staff in staff_data %}
+    <div class="user-in-group">
+        {% if valid_user_type %}
+            <form action="/group/{{group_data['_id']}}/remove/staff/{{staff['username']}}" method="POST" class="uig-section uig-remove">
+                <input type="submit" value="Remove" class="uig-remove-internal">
+            </form>
+        {% endif %}
+        {% if valid_user_type %}
+        <div class="uig-section uig-description">
+        {% else %}
+        <div class="uig-section uig-description uig-description-rounded">
+        {% endif %}
+            <p>Name: {{ staff["alias"] }}</p>
+            <p>Username: {{ staff["username"] }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{%endblock%}
+{%block footer%}{%endblock%}

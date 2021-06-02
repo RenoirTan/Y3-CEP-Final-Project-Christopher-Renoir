@@ -1,0 +1,82 @@
+{%extends "base.html"%}
+
+{%block title%}Homepage{%endblock%}
+{%block head%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/already-read.css') }}">
+{%endblock%}
+{%block scripts%} {%endblock%}
+{%block navtitle%}<h1>Announcement</h1>{%endblock%}
+{%block content%}
+
+	<div class="forms-title">
+		<h1 id="forms-title">
+			{{ announcement_data["title"] }}
+		</h1>
+
+		<p id="date-posted">
+			<!---->
+			Posted on {{ announcement_data["datePosted"].strftime("%m/%d/%Y, %H:%M:%S") }}
+		</p>
+
+		<p>
+			By:
+			{{ author_data["username"] }}
+		</p>
+	</div>
+
+	<div class="forms-content markdown-content" id="announcements-content">
+{{ announcement_data["body"] }}
+	</div>
+
+	<div class="already-read" id="already-read">
+		{% if user_type == "STUDENT" and not user_read %}
+			<div class="mark-as-read-flex">
+				<form action="/announcement/{{announcement_data['_id']|string}}" method="POST" id="mark-as-read">
+					<button type="submit" class="btn">Mark as Read</button>
+				</form>
+			</div>
+		{% elif user_type == "STAFF" %}
+			{% if bluetickers|length == 0 %}
+			<div class="none-read">
+				<h4><i>No one has read your announcement yet.</i></h4>
+				<p><i>I think your students hate you.</i></p>
+			</div>
+			{% else %}
+			<h2><code>Already Read</code></h2>
+			<table class="table bluetick-list">
+				<thead>
+					<tr>
+						<th scope="col">
+							Username
+						</th>
+						<th scope="col">
+							Name
+						</th>
+						<th scope="col">
+							Date Read
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for blueticker in bluetickers %}
+						<tr class="blueticker">
+							<td class="">
+								<div class="blueticker-data blueticker-username">{{ blueticker["username"] }}</div>
+							</td>
+							<td class="">
+								<div class="blueticker-data blueticker-name">{{ blueticker["name"] }}</div>
+							</td>
+							<td class="">
+								<div class="blueticker-data blueticker-date">{{ blueticker["dateRead"].strftime("%m/%d/%Y, %H:%M:%S") }}</div>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			{% endif %}
+		{% endif %}
+	</div>
+
+
+{%endblock%}
+{%block footer%}{%endblock%}

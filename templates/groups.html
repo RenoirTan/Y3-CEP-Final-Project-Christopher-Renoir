@@ -1,0 +1,43 @@
+{%extends "base.html"%}
+
+{%block title%}Group{%endblock%}
+{%block head%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/entities.css') }}">
+{%endblock%}
+{%block scripts%} {%endblock%}
+{%block navtitle%}<h1>Groups</h1>{%endblock%}
+{%block content%}
+
+    {% if valid_user_type %}
+    <div id="create-group-redirect">
+        <a href="/group/create" id="create-group-redirect-button" class="btn btn-block">
+            Create a Group!
+        </a>
+    </div>
+    {% endif %}
+    
+    {% for group in groups %}
+    <a href="/group/{{group['_id']|string}}" class="entity-link" style="text-decoration: none">
+        <div class="small-entity">
+            <h3 class="entity-name">
+                {{ group["name"] }}
+            </h3>
+            <p id="date-posted">
+                <!---->
+                Last updated on {{ group["dateUpdated"].strftime("%m/%d/%Y, %H:%M:%S") }}
+            </p>
+        </div>
+    </a>
+    {% endfor %}
+    
+    <div id="bottom-arrows">
+        <a href="/groups/?page={{page_number-1}}" id="previous-page" class="btn">
+            <<<
+        </a>
+        <a href="/groups/?page={{page_number+1}}" id="next-page" class="btn">
+            >>>
+        </a>
+    </div>
+
+{%endblock%}
+{%block footer%}{%endblock%}

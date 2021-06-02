@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Students' Gateway: {%block title%}{%endblock%}</title>
+
+	<link rel="icon" href="https://i.imgur.com/EtS1dWS.png">
+
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Styles -->
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/base.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/navbar.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/paginators.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/buttons.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/input-field.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/sidebar.css') }}">
+
+	<link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+
+	{%block head%}
+	{%endblock%}
+</head>
+<body>
+
+	<!-- Scripts -->
+
+	<script src="{{ url_for('static', filename='scripts/base.js') }}"></script>
+	<script src="{{ url_for('static', filename='scripts/sidebar.js') }}"></script>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+	<!--script src="{{ url_for('static', filename='scripts/mdrenderer.js') }}"></script-->
+	<!--
+		I dumped the markdown renderer here because I couldn't get imports to work. :(
+	-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js"></script>
+
+	<script>
+		$(document).ready(() => {
+			$(".markdown-content").each((i, obj) => {
+				var content = obj.innerHTML;
+				var markedContent = marked(content);
+				obj.innerHTML = markedContent;
+			});
+		});
+	</script>
+
+	{%block scripts%} {%endblock%}
+
+	<nav class="navbar navbar-expand-lg" id="navbar">
+
+		<button class="navbar-toggler" id="navbar-open-close" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon" id="navbar-oc-span">&#9776;</span>
+		</button>
+
+		<!-- Links -->
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<!--
+				<li class="nav-item">
+					<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+				</li>
+				-->
+				{% if logged_in_user %}
+				<li class="nav-item">
+					<a href="javascript:void(0)" class="nav-link" onclick="openSidebar()">
+						Profile
+					</a>
+				</li>
+				{% endif %}
+				<li class="nav-item">
+					<a class="nav-link" href="/">Home</a>
+				</li>
+				{% if logged_in_user %}
+				<li class="nav-item">
+					<a class="nav-link" href="/notifications">Notifications</a>
+				</li>
+				{% endif %}
+				{% if logged_in_user %}
+				<li class="nav-item">
+					<a class="nav-link" href="/announcements">Announcements</a>
+				</li>
+				{% endif %}
+				{% if logged_in_user %}
+				<li class="nav-item">
+					<a class="nav-link" href="/groups">Groups</a>
+				</li>
+				{% endif %}
+				{%block navbar%} {%endblock%}
+				<li class="nav-item">
+					{% if logged_in_user %}
+					<a class="nav-link" href="/logout">Logout</a>
+					{% else %}
+					<a class="nav-link" href="/login">Login</a>
+					{% endif %}
+				</li>
+			</ul>
+		</div>
+			
+
+		<img src="https://i.imgur.com/EtS1dWS.png" class="no-bs" id="nav-logo" alt="Raffles Institution" href="http://www.ri.edu.sg/">
+
+
+	</nav>
+
+	<div class="sidebar" id="sidebar">
+		<a href="javascript:void(0)" class="sidebar-item" onclick="closeSidebar()" id="close-sidebar">
+			&times;
+		</a>
+		<ul>
+			{% if logged_in_user %}
+			<li class="sidebar-item">
+				<p>{{logged_in_user}}</p>
+			</li>
+			{% endif %}
+			<li class="sidebar-item">
+				{% if logged_in_user %}
+				<a class="sidebar-item" href="/logout"><p>Logout</p></a>
+				{% else %}
+				<a class="sidebar-item" href="/login"><p>Login</p></a>
+				{% endif %}
+			</li>
+		</ul>
+	</div>
+
+	<div class="main" id="main">
+		<div class="title" id="nav-title">
+			{%block navtitle%} {%endblock%}
+		</div>
+	{%block content%} {%endblock%}
+	</div>
+
+	<footer class="container-fluid footer" id="footer">
+		<div>
+			<p>Students' Gateway</p>
+			<p><i>Please pay us</i></p>
+		</div>
+	{%block footer%} {%endblock%}
+	</footer>
+</body>
+</html>

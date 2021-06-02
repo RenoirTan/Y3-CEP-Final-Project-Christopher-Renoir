@@ -1,0 +1,17 @@
+{%extends "base.html"%}
+
+{%block title%}Successfully posted announcement!{%endblock%}
+{%block head%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/entities.css') }}">{%endblock%}
+{%block scripts%} {%endblock%}
+{%block navtitle%}<h1>Announcement Posted!</h1>{%endblock%}
+{%block content%}
+
+<a href="/announcement/{{announcement_id}}" class="entity-link" style="text-decoration: none; margin-top: 30px;">
+	<div class="small-entity" style="text-decoration: none">
+		<p>View your announcement here.</p>
+	</div>
+</a>
+
+{%endblock%}
+{%block footer%}{%endblock%}

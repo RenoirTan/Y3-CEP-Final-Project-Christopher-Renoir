@@ -1,0 +1,19 @@
+{%extends "base.html"%}
+
+{%block title%}Homepage{%endblock%}
+{%block head%}{%endblock%}
+{%block scripts%}{%endblock%}
+{%block navtitle%}<h1>Huh?</h1>{%endblock%}
+{%block content%}
+
+<div>
+	<h3>Hmm, I think you may have done something wrong.</h3>
+	<p>{{ error_text|string }}</p>
+	<a href="/" class="btn">
+		Go back to the homepage.
+	</a>
+</div>
+
+
+{%endblock%}
+{%block footer%}{%endblock%}

@@ -1,0 +1,37 @@
+.notification-announcement {
+	border-left: 5px solid #FF0000;
+}
+
+.notifications-list {
+	padding: 10px 10px;
+	margin-top: 20px;
+}
+
+.notification-data {
+	background-color: #FFFFFF;
+	border-color: #FFFFFF;
+	border-bottom: 5px solid #06a783;
+	color: #333333;
+	box-shadow: 0 0 10px #BBBBBB/*rgb(9, 131, 64)*/;
+	margin: 0px;
+	padding: 10px;
+    text-decoration: none;
+    flex-grow: 1;
+	transition: background-color 0.3s;
+}
+
+.notification-data:hover {
+	background-color: #CCCCCC;
+}
+
+.notification-type {
+	border-radius: 5px 0px 0px 5px;
+}
+
+.notification-title {
+	border-radius: 0px;
+}
+
+.notification-date {
+	border-radius: 0px 5px 5px 0px;
+}

@@ -1,0 +1,59 @@
+{%extends "base.html"%}
+
+{%block title%}Notifications{%endblock%}
+{%block head%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/entities.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/notifications.css') }}">
+{%endblock%}
+{%block scripts%} {%endblock%}
+{%block navtitle%}<h1>Notifications</h1>{%endblock%}
+{%block content%}
+
+
+<table class="table notifications-list">
+	<thead>
+		<tr>
+			<th scope="col">
+				Type
+			</th>
+			<th scope="col">
+				Notification
+			</th>
+			<th scope="col">
+				Date
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for notif in notifs %}
+			<tr class="notification">
+				{% if notif["notif_type"] == "announcement" %}
+				<td class="">
+					<a href="/announcement/{{notif['notif']['_id']|string}}" class="notification-href" style="text-decoration: none;">
+						<div class="notification-data notification-type">
+							Announcement
+						</div>
+					</a>
+				</td>
+				<td class="">
+					<a href="/announcement/{{notif['notif']['_id']|string}}" class="notification-href" style="text-decoration: none;">
+						<div class="notification-data notification-title">
+							{{ notif["notif"]["title"] }}
+						</div>
+					</a>
+				</td>
+				<td class="">
+					<a href="/announcement/{{notif['notif']['_id']|string}}" class="notification-href" style="text-decoration: none;">
+						<div class="notification-data notification-date">
+							{{ notif["notif"]["datePosted"].strftime("%m/%d/%Y, %H:%M:%S") }}
+						</div>
+					</a>
+				</td>
+				{% endif %}
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+{%endblock%}
+{%block footer%}{%endblock%}

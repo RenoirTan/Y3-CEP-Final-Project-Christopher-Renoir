@@ -1,0 +1,42 @@
+{%extends "base.html"%}
+
+{%block title%}Post announcement{%endblock%}
+{%block head%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/create-entity.css') }}">{%endblock%}
+{%block scripts%} {%endblock%}
+{%block navtitle%}<h1>New Announcement</h1>{%endblock%}
+{%block content%}
+
+<form action="/announcement/post" method="POST" id="post-announcement">
+	<div class="create-entity">
+		<div class="create-entity-screen">
+			<div class="create-entity-title">
+				<h1>Create an Announcement</h1>
+			</div>
+			<div class="create-entity-form">
+				<div class="control-group">
+					<textarea type="text" class="input-field" value="" placeholder="Insert a title" name="title" rows=3></textarea>
+					<label class="login-field-icon fui-user" for="title-field"></label>
+				</div>
+				<div class="control-group">
+					<textarea type="text" class="input-field" value="" placeholder="Write your announcement here!" name="body" rows=20></textarea>
+					<label class="login-field-icon fui-user" for="body-field"></label>
+				</div>
+				<div class="control-group">
+					<label for="target-group">Target Group:</label>
+					<select name="target-group" id="target-group" form="post-announcement">
+						{% for group in groups %}
+							<option value="{{group['_id']|string}}">
+								{{group["name"]}}
+							</option>
+						{% endfor %}
+					</select>
+				</div>
+				<input type="submit" value="Post announcement" class="btn btn-block" onclick="return confirm('Are you sure?');">
+			</div>
+		</div>
+	</div>
+</form>
+
+{%endblock%}
+{%block footer%}{%endblock%}

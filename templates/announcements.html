@@ -1,0 +1,44 @@
+{%extends "base.html"%}
+
+{%block title%}Homepage{%endblock%}
+{%block head%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/entities.css') }}">
+{%endblock%}
+{%block scripts%} {%endblock%}
+{%block navtitle%}<h1>Announcements</h1>{%endblock%}
+{%block content%}
+
+	{% if valid_user_type %}
+		<div id="create-announcement-redirect">
+			<a href="/announcement/post" class="btn btn-block">
+				Create an Announcement!
+			</a>
+		</div>
+	{% endif %}
+
+	{% for announcement in announcements %}
+		<a href="/announcement/{{announcement['_id']|string}}" class="entity-link" style="text-decoration: none">
+			<div class="small-entity">
+				<h3 class="entity-title">
+					{{ announcement["title"] }}
+				</h3>
+				<p id="date-posted">
+					<!---->
+					Posted on {{ announcement["datePosted"].strftime("%m/%d/%Y, %H:%M:%S") }}
+				</p>
+			</div>
+		</a>
+	{% endfor %}
+
+	<div id="bottom-arrows">
+		<a href="/announcements/?page={{page_number-1}}" id="previous-page" class="btn">
+			<<<
+		</a>
+		<a href="/announcements/?page={{page_number+1}}" id="next-page" class="btn">
+			>>>
+		</a>
+	</div>
+
+
+{%endblock%}
+{%block footer%}{%endblock%}

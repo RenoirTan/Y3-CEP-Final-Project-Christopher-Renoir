@@ -1,0 +1,37 @@
+{%extends "base.html"%}
+
+{%block title%}Create Student{%endblock%}
+{%block head%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/create-entity.css') }}">
+{%endblock%}
+{%block scripts%} {%endblock%}
+{%block navtitle%}<h1>Create Student User</h1>{%endblock%}
+{%block content%}
+
+<form action="/user/create/student" method="POST">
+    <div class="create-entity">
+		<div class="create-entity-title">
+			<h1>Create a Student</h1>
+		</div>
+        <div class="create-entity-form">
+            <div class="control-group">
+                <input type="text" class="input-field" value="" placeholder="Username" name="username" rows=1></input>
+                <label class="login-field-icon fui-user" for="username-field"></label>
+            </div>
+			<div class="control-group">
+                <input type="text" class="input-field" value="" placeholder="Password" name="password"
+                rows=1></input>
+                <label class="login-field-icon fui-lock" for="password-field"></label>
+            </div>
+			<div class="control-group">
+                <input type="text" class="input-field" value="" placeholder="Full Name" name="name"
+                rows=1></input>
+                <label class="login-field-icon fui-user" for="name-field"></label>
+            </div>
+            <input type="submit" value="Create Student" class="btn btn-block">
+        </div>
+    </div>
+</form>
+
+{%endblock%}
+{%block footer%}{%endblock%}

@@ -1,0 +1,110 @@
+# `Student's Gateway`
+
+*See `testing.toml` for testing accounts or `./notes/dummy_info.md` for more info*
+
+*Work distribution is at the end of this `README`*
+
+*To run the app, do `python main.py`. Source code is in `./master`*
+
+*We suggest you use the `poetry` package to install dependencies, but if that does not work, you can use `requirements.txt`*
+
+*Demo video is in `./videos`*
+
+Welcome to `Student's Gateway`, a better looking version of Stamford. `Student's Gateway` has more features than Stamford and Ivy's announcement system. Like Stamford, you are able to send announcements to the whole school, but you cannot send to a specific group of students. In addition, Stamford does not send push notifications, which defeats the purpose of it being an announcement portal between teachers and students. Although Ivy is an improvement from Stamford, the way it sends notifications to students is via email, which clutters students' inboxes, which we feel is undesirable. Hence, we made `Student's Gateway` as a specialised platform to send announcements to students.
+
+## How it works
+
+`Student's Gateway` has 2 groups of users
+
+1. Students
+2. Staff
+
+`Student`s are the ones who read `announcement`s and can be added to groups by `staff` members. Meanwhile, `staff` can create `announcement`s directed to different `student`s and add and remove students to `group`s they are in.
+
+When a `staff` member sends an announcement to a `group`, a notification is sent out to the `student`s in the `group`. Only the `student`s and `staff` in the `group` will be able to see them.
+
+## Features
+
+`Student's Gateway has the following features:
+
+1. Announcements
+2. Groups
+3. Notifications
+
+`Announcements` are sent to the students and can be directed to different `groups`. These `groups` can have different students and tags, which you can edit in their respective individual webpages. When a student receives a new unread `announcement`, they can see that `announcement` appear in their `notifications`. You can access all of these features by using the buttons in the top navbar.
+
+## Announcements
+
+### For teachers
+
+Staff can create `announcements` by pressing the `Announcements` button in the top navigation bar (4th button from the left when logged in). When the page has finished loading, there will be a green button prominently displayed showing `Create an Announcement!`. When you press that button, you can create an announcement by giving it a title, writing its content and then selecting its destination `group`. Once you have written your `announcement`, you can submit it and you will be redirected to your own `announcement` page. In that page, you can see the list of students who have read your announcement (or at least blueticked it) along with the announcement body.
+
+Your announcement body must be written with `Github-flavoured Markdown` and is rendered with `Marked` to display beautifully formatted announcement. (In fact, this entire Homepage was written in `Markdown`.) We have chosen `Markdown` over other text formats due to its simplicity and number of features. We have listed a few handy guides for you to refer to when using `Markdown` below.
+
+1. [Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
+2. [2-page Markdown Cheatsheet](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf)
+
+![Create Announcement](https://i.imgur.com/rVbjt1E.png)
+
+### For students
+
+Once your teacher has sent you an `announcement`, you should be able to see it by pressing the `Notifications` button in the navigation bar (3rd button from the left) if you have not marked it as read, or by pressing `Announcements`. Once you have read the `announcement`, make sure to mark it as read to let your teacher know that you have read it. The `Mark as Read` button can be found below the `announcement` body.
+
+## Groups
+
+`Groups` are a way of organising users. Staff are able to use groups as a way of channeling announcements to the correct group of students or other staff. They can create, delete or modify their tags, students and staff. `Groups` can be accessed by pressing the `Groups` button (5th from left).
+
+### For teachers
+
+As a staff member, you can create `groups` by pressing the `Create a Group!` button. You can give it a name, and a list of tags (**currently case sensitive**), split with newlines (a.k.a. `Enter` or `Return` depending on whether you are using a PC or a Mac). An example of this can be found in the image below:
+
+![Create Group](https://i.imgur.com/9SJ1DOT.png)
+
+Upon creating your group, you can add, modify or remove tags, in addition to adding students or staff with their `Username`.
+
+### For students
+
+As with for staff, students can access their `groups` by pressing the `Groups` button in the navigation bar. Other than viewing the groups you are in, there is nothing else you can do.
+
+## Software used
+
+1. Python
+2. Flask
+3. MongoDB
+4. jQuery
+5. Bootstrap
+6. Marked
+
+## Application Architecture
+
+### Overview
+
+This application uses a flask programme, setup in `root/master/bottle/__init__.py`, to support its various functions, namely the website and API. Additionally, MongoDB is used as our database of choice. Linking the different modules is `root/main.py`.
+
+### MongoDB
+
+To connect to our MongoDB database, `root/master/mongosetup.py` is used to set up the client connection to it.
+
+### Website
+
+The website is served with `root/master/bottle/website.py` with a flask blueprint. This shows the main webpages the users are supposed to see.
+
+### API
+
+This application uses a flask programme to support the API (`apiget.py` and `apipost.py` in `master/bottle/`) between users (via a website or Android/iOS application) and our Mongo Database, and another to deliver webpages to the website (`website.py`).
+
+## Credits
+
+`Christopher Cheng`: Mainly back-end
+
+1. Responsible for programming the interface to process requests from the website to our database.
+2. Troubleshoots errors and fixing user-caused bugs.
+3. Documented the backend code.
+
+`Renoir Tan`: Mainly front-end
+
+1. Responsible for designing the website and layout.
+2. Links input and output pages using the API `Christopher` wrote.
+3. Implemented `Marked` for announcements and homepage.
+4. Wrote some docstrings and cleaned up the code to meet PEP 8 standards.
+5. Did notifications and sending announcements to specific groups.

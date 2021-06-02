@@ -1,0 +1,43 @@
+### List of stuff we need to do
+
+#### Take not that this list does not fully encompass the features we have implemented.
+
+- [x] Login
+	- [x] Student Login
+		- [x] Login Page
+		- [x] Check Credentials
+	- [x] Staff Login
+		- [x] Login Page
+		- [x] Check Credentials
+	- [x] Change from staff to student login page
+- [x] Announcements
+	- [x] Sample Data (In forms collection, "announcements" type)
+	- [x] Individual Announcements Page
+		- [x] Route Setup
+		- [x] Bluetick Functionality
+		- [x] HTML
+	- [x] General Announcements Page (Lists all announcement titles)
+		- [x] Route Setup
+		- [x] cursor to retrieve more <previous page next page>
+		- [x] HTML
+	- [x] Staff General Announcement Page (Post announcement function)
+		- [x] Route Setup
+		- [x] HTML
+- [x] Groups
+	- [x] General Groups Page (Displays all groups the user is in)
+		- [x] Route Setup
+		- [x] HTML Student
+		- [x] HTML Staff (Button to redirect to Create Group Page)
+	- [x] Individual Groups Page (Displays info about each group)
+		- [x] Route Setup
+		- [x] HTML Student
+			- [x] List everyone inside the group + User type
+		- [x] HTML Staff
+			- [x] Add Member
+			- [x] Remove Member
+			- [x] Delete Group
+			- [x] Tags Customisation
+	- [x] Create Group Page
+- [x] Notifications
+- [x] Text markdown
+- [x] Documentation

@@ -1,0 +1,42 @@
+.already-read {
+	padding: 10px 10px;
+	margin-top: 20px;
+}
+
+.none-read {
+	margin: auto;
+	box-shadow: 0 0 5px #7a7a7a;
+	border-radius: 5px;
+	padding: 10px;
+	text-align: center;
+}
+
+
+.blueticker-data {
+	background-color: #FFFFFF;
+	border-color: #FFFFFF;
+	border-bottom: 5px solid #06a783;
+	color: #333333;
+	box-shadow: 0 0 10px #BBBBBB/*rgb(9, 131, 64)*/;
+	margin: 0px;
+	padding: 10px;
+    text-decoration: none;
+    flex-grow: 1;
+}
+
+.blueticker-username {
+	border-radius: 5px 0px 0px 5px;
+}
+
+.blueticker-name {
+	border-radius: 0px;
+}
+
+.blueticker-date {
+	border-radius: 0px 5px 5px 0px;
+}
+
+.mark-as-read-flex {
+	display: flex;
+	justify-content: center;
+}
